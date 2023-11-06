@@ -2,12 +2,14 @@
 import models from "../models";
 import resource from "../"
 import User from "../models/user";
+import fs from 'fs'
+import path from 'path'
 
 
 export default {
     register: async(req, res) => {
          try{
-            if(req.files){
+            if(req.files && req.files.portada){
                 let img_path = req.files.portada.path;
                 let name = img_path.split('/');
                 let portada_name = name[2];
@@ -78,7 +80,7 @@ export default {
 
                 })
                 res.status(200).json({
-                    Categories: Categories
+                    categories: Categories
                 })
             } catch (error) {
              res.status(500).send({
@@ -88,6 +90,30 @@ export default {
             
         }
         
+    },
+
+    obtener_imagen: async(req, res) =>{
+        try {
+            let img = req.params['img'];
+
+
+            fs.stat('./uploads/categorie/'+img, function(err){
+                if(!err){
+                    let path_img = './uploads/categorie/'+img;
+                    res.status(200).sendFile(path.resolve(path_img));
+                }else{
+                    let path_img = './uploads/default.jpg';
+                    res.status(200).sendFile(path.resolve(path_img));
+                }
+            })
+            
+        } catch (error) {
+            res.status.send({
+                message: "Ocurrio un problema"
+            })
+            console.log(error);
+            
+        }
     },
 
     remove: async(req, res) => {
@@ -107,4 +133,3 @@ export default {
         }
     }
 }
- 

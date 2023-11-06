@@ -14,6 +14,7 @@ router.get('/list',auth.verifyAdmin, controller.list)
 router.get('/list',auth.verifyAdmin, controller.list)
 router.delete('/delete',auth.verifyAdmin, controller.remove)
 
+router.get('/uploads/categorie/:img',auth.verifyAdmin, controller.obtener_imagen)
 
 
 export default router
