@@ -4,6 +4,7 @@ export default {
             id: categorie.id,
             title: categorie.title,
             imagen: categorie.imagen,
+            imagen_home:'http://localhost:5000/' + '/api/categories/uploads/categorie/' + categorie.imagen,
             state: categorie.state
            
         }

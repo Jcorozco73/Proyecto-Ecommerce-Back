@@ -74,7 +74,6 @@ export default {
 
                 Sliders = Sliders.map((user) =>{
                 return resource.Slider.slider_list(user)
-
                 })
                 res.status(200).json({
                     sliders: Sliders
