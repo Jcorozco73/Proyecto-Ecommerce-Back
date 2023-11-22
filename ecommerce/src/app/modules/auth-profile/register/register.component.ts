@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 
-
+declare function alertDanger([]): any
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -33,12 +33,12 @@ public router: Router
       !this.surname ||
       !this.password ||
       !this.repeat_password) {
-        alert("Todos los campos son obligatorios")
+        alertDanger("Todos los campos son obligatorios")
 
       }
       if(this.password !== this.repeat_password)
         {
-        alert("Las contraseñas no coinciden")
+        alertDanger("Las contraseñas no coinciden")
         }
         let data = {
           email: this.email,

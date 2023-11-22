@@ -1,5 +1,5 @@
 import models from "../models";
-import resource from "../resource";
+import resource from "../DAO-resource/Classes";
 import fs from "fs"
 import path from "path" 
 

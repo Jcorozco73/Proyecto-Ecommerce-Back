@@ -5,6 +5,7 @@ import Variedad from "./variedad";
 import Slider from "./slider";
 import Cupone from "./cupone";
 import Discount from "./discount";
+import Cart from "./cart";
 
 
 export default {
@@ -14,7 +15,8 @@ export default {
     Variedad,
     Slider, 
     Cupone,
-    Discount
+    Discount,
+    Cart
       
 
     }

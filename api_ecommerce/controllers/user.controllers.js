@@ -31,6 +31,7 @@ export default {
                     const USER_FRONTED = {
                         token: tokenT,
                         user: {
+                            id: user._id,
                             name: user.name,
                             surname: user.surname,
                             email: user.email,

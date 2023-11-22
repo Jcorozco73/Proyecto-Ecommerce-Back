@@ -14,9 +14,10 @@ export class AuthGuard  {
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot,
+  canActivate(
+    route: ActivatedRouteSnapshot,
      state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return true
+    
       if(
         !this.AuthService.user || !this.AuthService.token){
         this.router.navigate(['auth/login'])
@@ -24,6 +25,7 @@ export class AuthGuard  {
 
         }
        let token = this.AuthService.token
+
         let payload = (JSON.parse(atob(token.split('.')[1]))).exp
         if(Math.floor((new Date).getTime() / 1000) >= payload){
           this.AuthService.logout()

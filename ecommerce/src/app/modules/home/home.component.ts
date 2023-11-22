@@ -50,13 +50,13 @@ export class HomeComponent implements OnInit {
       console.log(resp,"1");
       this.sliders =resp.sliders;
       this.categories = resp.categories;
-      this.bestProducts = resp.best_products;
-      this.our_products = resp.our_products;
+      this.bestProducts = resp.bestProducts;
+      this.our_products = resp.ourproducts;
       this.FlashSale = resp.FlashSale;
-      this.FlashProductList = resp.campaign_products;
+      this.FlashProductList = resp.productList;
       setTimeout(() => {
         if(this.FlashSale){
-          var eventCounter = $(".sale-countdown");
+          let eventCounter = $(".sale-countdown");
           let PARSE_DATE = new Date(this.FlashSale.end_date);
           // console.log(PARSE_DATE.getMonth(),PARSE_DATE.getDate());
           let DATE = PARSE_DATE.getFullYear() + "/"+ (PARSE_DATE.getMonth()+1) + "/" + (PARSE_DATE.getDate()+1);
@@ -92,9 +92,9 @@ export class HomeComponent implements OnInit {
 
   getCalNewPrice(product:any){
     if(this.FlashSale.type_discount == 1){
-      return product.price_soles - product.price_soles*this.FlashSale.discount*0.01;
+      return product.price_usd - product.price_usd*this.FlashSale.discount*0.01;
     }else{
-      return product.price_soles - this.FlashSale.discount;
+      return product.price_usd - this.FlashSale.discount;
     }
   }
 }
